@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Bonito Shaving Experience — Guest Flyer</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@400;500;600;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #b8a898;
+    display: flex;
+    justify-content: center;
+    padding: 24px;
+    min-height: 100vh;
+  }
+
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    background: #111;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+    font-family: 'Inter', sans-serif;
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    position: relative;
+    height: 100mm;
+    overflow: hidden;
+    background: #1a0f05;
+  }
+
+  .hero-photo-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(160deg, #0d0804 0%, #3d2010 45%, #1a0c04 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 9px;
+    color: rgba(255,255,255,0.2);
+    letter-spacing: 0.1em;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.7) 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 8mm 9mm;
+  }
+
+  .hero-kicker {
+    font-size: 8.5px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #c9963a;
+    margin-bottom: 3mm;
+  }
+
+  .hero-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: 34px;
+    font-weight: 900;
+    color: #fff;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    text-shadow: 0 2px 16px rgba(0,0,0,0.6);
+  }
+
+  .hero-headline em {
+    font-style: italic;
+    color: #f5c87a;
+  }
+
+  /* ===== HOOK STRIP ===== */
+  .hook-strip {
+    background: #c9963a;
+    padding: 3.5mm 9mm;
+  }
+
+  .hook-text {
+    font-size: 10px;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: 0.06em;
+    text-align: center;
+    margin-bottom: 2mm;
+  }
+
+  .hook-sub {
+    font-size: 8.5px;
+    font-style: italic;
+    color: rgba(255,255,255,0.72);
+    text-align: center;
+    letter-spacing: 0.03em;
+    line-height: 1.5;
+  }
+
+  /* ===== STEPS ===== */
+  .steps-section {
+    background: #fff;
+    padding: 7mm 9mm;
+  }
+
+  .steps-title {
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #c9963a;
+    margin-bottom: 4mm;
+    text-align: center;
+  }
+
+  .steps-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 4mm;
+  }
+
+  .step-card {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .step-photo-placeholder {
+    width: 100%;
+    height: 38mm;
+    background: #e8ddd0;
+    border-radius: 4px 4px 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 7px;
+    color: #a08060;
+    letter-spacing: 0.06em;
+    text-align: center;
+    padding: 2mm;
+  }
+
+  .step-photo {
+    width: 100%;
+    height: 38mm;
+    object-fit: cover;
+    border-radius: 4px 4px 0 0;
+    display: block;
+  }
+
+  .step-body {
+    background: #111;
+    border-radius: 0 0 4px 4px;
+    padding: 3.5mm;
+    flex: 1;
+  }
+
+  .step-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 900;
+    color: #c9963a;
+    line-height: 1;
+    margin-bottom: 1mm;
+  }
+
+  .step-verb {
+    font-family: 'Playfair Display', serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 2mm;
+  }
+
+  .step-desc {
+    font-size: 8px;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.65;
+  }
+
+  .step-highlight {
+    margin-top: 2mm;
+    font-size: 8px;
+    font-weight: 700;
+    color: #f5c87a;
+  }
+
+  .safety-note {
+    margin-top: 4mm;
+    background: #f5f0e8;
+    border-left: 3px solid #c9963a;
+    border-radius: 0 3px 3px 0;
+    padding: 2.5mm 4mm;
+    font-size: 8.5px;
+    color: #5c3a1a;
+    line-height: 1.6;
+  }
+
+  .safety-note strong {
+    color: #3d2208;
+  }
+
+  /* ===== WOW SECTION ===== */
+  .wow-section {
+    background: #1a1208;
+    padding: 6mm 9mm;
+  }
+
+  .wow-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 4mm;
+    text-align: center;
+  }
+
+  .wow-title span {
+    color: #c9963a;
+  }
+
+  .wow-facts {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3mm;
+  }
+
+  .wow-fact {
+    display: flex;
+    align-items: flex-start;
+    gap: 3mm;
+  }
+
+  .wow-icon {
+    font-size: 20px;
+    flex-shrink: 0;
+    margin-top: 0.5mm;
+  }
+
+  .wow-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 1mm;
+  }
+
+  .wow-copy strong {
+    font-size: 9.5px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.3;
+  }
+
+  .wow-copy p {
+    font-size: 8px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.6;
+  }
+
+  /* ===== INFO BAR ===== */
+  .info-bar {
+    background: #222;
+    padding: 5mm 9mm;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 3mm;
+    border-top: 1px solid #333;
+    border-bottom: 1px solid #333;
+  }
+
+  .info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5mm;
+    align-items: center;
+    text-align: center;
+  }
+
+  .info-label {
+    font-size: 6.5px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #c9963a;
+  }
+
+  .info-value {
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.2;
+  }
+
+  .info-sub {
+    font-size: 7px;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.4;
+  }
+
+  /* ===== FOOTER ===== */
+  .footer {
+    background: #0d0804;
+    padding: 6mm 9mm;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4mm;
+    flex: 1;
+  }
+
+  .footer-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5mm;
+  }
+
+  .footer-how {
+    font-size: 7.5px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #c9963a;
+  }
+
+  .footer-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.03em;
+    line-height: 1.1;
+  }
+
+  .footer-sub {
+    font-size: 8.5px;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.05em;
+  }
+
+  .footer-contact {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 2mm;
+  }
+
+  .contact-row {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.5mm;
+  }
+
+  .contact-row .clabel {
+    font-size: 6.5px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+  }
+
+  .contact-row .cvalue {
+    font-size: 9px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.85);
+    letter-spacing: 0.02em;
+  }
+
+  .ask-host-badge {
+    background: #c9963a;
+    border-radius: 4px;
+    padding: 2.5mm 4mm;
+    font-size: 9px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.05em;
+    text-align: center;
+    margin-top: 1mm;
+  }
+
+  @media print {
+    body { background: none; padding: 0; }
+    .page { box-shadow: none; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HERO -->
+  <div class="hero">
+    <img style="width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0;" src="IMG_1321.PNG" alt="Bonito shaving experience">
+    <div class="hero-overlay">
+      <div class="hero-kicker">Hands-on Japanese food experience · Osaka</div>
+      <div class="hero-headline">
+        Shave it. Watch it <em>dance.</em><br>
+        The fun of making it<br>
+        is what makes it <em>delicious.</em>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOOK STRIP -->
+  <div class="hook-strip">
+    <div class="hook-text">You shave real bonito fish into flakes — watch them dance — then eat them fresh. Nothing like it anywhere in the world.</div>
+  </div>
+
+  <!-- STEPS -->
+  <div class="steps-section">
+    <div class="steps-title">What happens in 1 hour</div>
+    <div class="steps-grid">
+
+      <div class="step-card">
+        <img class="step-photo" src="main.JPEG" alt="Shaving bonito">
+        <div class="step-body">
+          <div class="step-number">01</div>
+          <div class="step-verb">Shave</div>
+          <div class="step-desc">Pull a block of dried bonito across a blade. Paper-thin flakes flutter like feathers.</div>
+          <div class="step-highlight">→ Yes, you can film it.</div>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <img class="step-photo" src="kezuribushi.jpg" alt="Fresh bonito on rice">
+        <div class="step-body">
+          <div class="step-number">02</div>
+          <div class="step-verb">Eat</div>
+          <div class="step-desc">Pile your fresh flakes onto rice or eat them straight. The flavor is nothing like the packaged kind.</div>
+          <div class="step-highlight">→ Made by your hands.</div>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <img class="step-photo" src="dashi_head_img.jpg" alt="Dashi broth tasting">
+        <div class="step-body">
+          <div class="step-number">03</div>
+          <div class="step-verb">Drink</div>
+          <div class="step-desc">Taste the dashi broth three ways — soy sauce, dark soy, sea salt. Add chili spice and it transforms.</div>
+          <div class="step-highlight">→ Same broth, 4 flavors.</div>
+        </div>
+      </div>
+
+    </div>
+    <div class="safety-note">
+      🧤 <strong>Safety first:</strong> Cut-resistant gloves are available at no charge — perfect for anyone a little nervous. No experience needed. No injuries, just good memories.
+    </div>
+  </div>
+
+  <!-- WOW SECTION -->
+  <div class="wow-section">
+    <div class="wow-title">Why people <span>love</span> this</div>
+    <div class="wow-facts">
+      <div class="wow-fact">
+        <div class="wow-icon">🔥</div>
+        <div class="wow-copy">
+          <strong>It moves. Like, actually moves.</strong>
+          <p>Pour hot broth and the flakes rise, wave, sway — as if they're alive. Every single person gasps. Every time.</p>
+        </div>
+      </div>
+      <div class="wow-fact">
+        <div class="wow-icon">📱</div>
+        <div class="wow-copy">
+          <strong>Your best travel video. Guaranteed.</strong>
+          <p>Slow-mo shaving, dancing flakes, steaming broth. Post it — your followers will not have seen anything like this.</p>
+        </div>
+      </div>
+      <div class="wow-fact">
+        <div class="wow-icon">😮</div>
+        <div class="wow-copy">
+          <strong>Fresh taste hits different.</strong>
+          <p>Nothing from a packet comes close. Fresh-shaved katsuobushi is smokier, richer, and somehow — warmer.</p>
+        </div>
+      </div>
+      <div class="wow-fact">
+        <div class="wow-icon">🗾</div>
+        <div class="wow-copy">
+          <strong>99% of tourists never do this.</strong>
+          <p>You've eaten sushi. You've had ramen. But this? This is where Japanese flavor actually starts. Most people never know.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INFO BAR -->
+  <div class="info-bar">
+    <div class="info-item">
+      <div class="info-label">Price</div>
+      <div class="info-value">¥2,500</div>
+      <div class="info-sub">approx. $17 USD<br>per person</div>
+    </div>
+    <div class="info-item">
+      <div class="info-label">Payment</div>
+      <div class="info-value">Cash</div>
+      <div class="info-sub">cash payment only</div>
+    </div>
+    <div class="info-item">
+      <div class="info-label">Duration</div>
+      <div class="info-value">1 hour</div>
+      <div class="info-sub">just right — not too long,<br>not too rushed</div>
+    </div>
+    <div class="info-item">
+      <div class="info-label">Language</div>
+      <div class="info-value">A little</div>
+      <div class="info-sub">English spoken<br>(a little)</div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-brand">
+      <div class="footer-how">Bonito Shaving Experience</div>
+      <div class="footer-name">Zen &amp; Iki</div>
+      <div class="footer-sub">Osaka, Japan</div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
